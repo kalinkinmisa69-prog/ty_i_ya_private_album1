@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f1e8"><title>Только для нас ♡</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body class="login-page">
+  <main class="login-card">
+    <div class="login-flower">✿</div>
+    <p class="eyebrow">маленький мир для двоих</p>
+    <h1>Ты и Я <span>♡</span></h1>
+    <p>Здесь живут наши моменты.<br>Введи пароль, чтобы войти.</p>
+    <form id="login-form">
+      <label class="sr-only" for="password">Пароль</label>
+      <input id="password" name="password" type="password" placeholder="Наш секретный пароль" autocomplete="current-password" required>
+      <button class="pill-button" type="submit">Войти ♡</button>
+      <p id="login-error" class="login-error" role="alert"></p>
+    </form>
+    <span class="login-foot">только для нас двоих</span>
+  </main>
+  <script>
+    const form = document.querySelector('#login-form');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector('button');
+      const error = document.querySelector('#login-error');
+      button.disabled = true; button.textContent = 'Секундочку…'; error.textContent = '';
+      try {
+        const response = await fetch('/login', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({password: document.querySelector('#password').value})
+        });
+        if (response.ok) location.href = '/';
+        else error.textContent = 'Пароль не подошёл. Попробуй ещё раз ♡';
+      } catch (_) { error.textContent = 'Не удалось подключиться. Проверь интернет и попробуй снова.'; }
+      finally { button.disabled = false; button.textContent = 'Войти ♡'; }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f1e8">
+  <title>Ты и Я — наш маленький мир</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Ты и Я"><span class="heart">♡</span> Ты и Я</a>
+    <nav><a href="#albums">Альбомы</a><a href="#letter">Письмо</a><a href="#dates">Наши даты</a></nav>
+    <span class="tiny-heart">♡</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">наш маленький мир</p>
+        <h1>Ты и Я <span>♡</span></h1>
+        <p class="hero-text">Расстояние — это просто цифры на карте.<br>А всё самое тёплое всегда с нами.</p>
+        <div class="together-counter"><span id="days-count">∞</span><small>дней нашей истории ♡</small></div>
+        <a class="pill-button" href="#albums">Открыть наши воспоминания ↓</a>
+      </div>
+      <div class="hero-note">
+        <span class="scribble">для тебя, с любовью</span>
+        <div class="sun-doodle">☼</div>
+        <p>Ты — моё любимое<br>«сегодня».</p>
+      </div>
+    </section>
+
+    <section class="section" id="albums">
+      <div class="section-heading">
+        <div><p class="eyebrow">листай, вспоминай, улыбайся</p><h2>Наши альбомы <span>♡</span></h2></div>
+        <p class="side-note">маленькие кусочки<br>нашего большого «мы»</p>
+      </div>
+      <div id="album-grid" class="album-grid"></div>
+    </section>
+
+    <section class="letter-section" id="letter">
+      <div class="paperclip">♡</div>
+      <p class="eyebrow">если вдруг соскучишься</p>
+      <h2>Письмо тебе</h2>
+      <p class="letter-copy" id="love-letter-copy">Радость моя, я сохраняю эти фотографии, потому что в каждой есть что-то, что хочется оставить рядом. Даже когда нас разделяют километры, я могу открыть этот маленький альбом и снова улыбнуться. Спасибо, что ты есть в моей жизни. Ты моё солнышко, моя любимка и моя заечка. ♡</p>
+      <p class="signature" id="love-letter-signature">твой Коть, любимый и родной ♡</p>
+    </section>
+
+    <section class="secret-note" id="secret-note">
+      <span class="secret-stamp">для моей заи ♡</span>
+      <p class="eyebrow">маленький секрет</p>
+      <h2>Открой, когда соскучишься</h2>
+      <p>Нажми на конверт — внутри кое-что для тебя.</p>
+      <button class="envelope-button" id="open-secret" aria-expanded="false" aria-controls="secret-letter"><span>✉</span><small>только для тебя</small></button>
+      <div class="secret-letter" id="secret-letter" hidden>
+        <p>Моя любимка, если ты читаешь это, значит, возможно, тебе хочется, чтобы я был рядом. Представь, что я крепко-крепко обнимаю тебя. Ты моя радость, моё солнышко и одна из самых тёплых частей моей жизни. Расстояние не отменяет ни одного чувства. Я очень тебя люблю. ♡</p>
+        <span class="signature">твой Коть ♡</span>
+      </div>
+    </section>
+
+    <section class="section dates-section" id="dates">
+      <p class="eyebrow">дни, которые хочется помнить</p>
+      <h2>Наши даты <span>♡</span></h2>
+      <div class="date-cards">
+        <article class="date-card"><span>✿</span><p class="date-label">день начала нашей истории</p><h3>Самое красивое начало</h3><p>День, с которого началась наша история. Укажи дату в настройках сайта.</p></article>
+        <article class="date-card"><span>☼</span><p class="date-label">день, когда увиделись</p><h3>Наконец-то рядом</h3><p>Момент, который хочется проживать снова.</p></article>
+        <article class="date-card"><span>♡</span><p class="date-label">впереди</p><h3>Следующая встреча</h3>Место, где можно отметить дату вашей следующей встречи.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>сделано с любовью, только для нас</span><span>♡</span></footer>
+
+  <div class="modal" id="album-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="close-button" data-close aria-label="Закрыть">×</button>
+      <p class="eyebrow">наши воспоминания</p>
+      <h2 id="modal-title">Альбом</h2>
+      <p id="modal-desc" class="modal-desc"></p>
+      <div id="photo-grid" class="photo-grid"></div>
+      <section class="upload-panel">
+        <h3>Добавить новое воспоминание ♡</h3>
+        <p>Загрузить фото в этот альбом смогут оба — ты и твоя любимка.</p>
+        <form id="upload-form">
+          <label>Выбери фотографию <input id="upload-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif" required></label>
+          <label>Кто добавил фото?
+            <select id="upload-author">
+              <option value="kot">Твой Коть ♡</option>
+              <option value="her">Моя заечка ♡</option>
+            </select>
+          </label>
+          <label>Подпись <input id="upload-caption" type="text" maxlength="180" placeholder="Например: мой любимый момент"></label>
+          <label>Дата (необязательно) <input id="upload-date" type="text" maxlength="60" placeholder="Например: наше лето"></label>
+          <button class="pill-button" type="submit">Добавить в альбом ♡</button>
+          <p id="upload-status" role="status"></p>
+        </form>
+      </section>
+    </section>
+  </div>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" data-lightbox-close aria-label="Закрыть">×</button>
+    <button class="lightbox-arrow prev" aria-label="Предыдущее фото">‹</button>
+    <figure><img id="lightbox-image" alt=""><figcaption><span id="lightbox-date"></span><p id="lightbox-caption"></p></figcaption></figure>
+    <button class="lightbox-arrow next" aria-label="Следующее фото">›</button>
+  </div>
+  <script src="/script.js"></script>
+</body>
+</html>
